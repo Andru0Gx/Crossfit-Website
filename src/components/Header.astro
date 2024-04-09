@@ -1,0 +1,59 @@
+---
+const pages = [
+    {
+        title: "Home",
+        url: "/",
+    },
+    {
+        title: "Contact",
+        url: "https://wa.me/584249597302",
+        rel: "noopener noreferrer",
+        target: "_blank",
+    },
+    {
+        title: "Login",
+        url: "/",
+    },
+];
+---
+
+<header
+    class="sticky top-0 w-full flex justify-between px-3 pt-2 h-20 items-center shadow-lg bg-section sm:px-10 z-10"
+>
+    <a href="/" class="font-main text-secondary text-2xl">
+        Monagas<span class="text-primary">Box</span>
+    </a>
+
+    <nav class="space-x-10 font-secondary text-secondary hidden lg:flex">
+        {
+            pages.map(({ title, url, rel, target }) => (
+                <div class="">
+                    <a href={url} rel={rel} target={target}>
+                        {title}
+                    </a>
+                </div>
+            ))
+        }
+    </nav>
+
+    <button
+        class="lg:hidden"
+        onclick="document.getElementById('nav').classList.toggle('hidden')"
+    >
+
+    <!-- TODO : Hacer un componente para el HamburguerMenu -->
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="#fff"
+        >
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+    </button>
+</header>
