@@ -1,0 +1,68 @@
+---
+const contact_info = [
+    {
+        tag: "brands",
+        svg: "instagram",
+        info: "MonagasBox",
+        link: "https://www.instagram.com/monagasbox?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+    },
+
+    {
+        tag: "solid",
+        svg: "phone",
+        info: "+58 424-9597302",
+    },
+
+    {
+        tag: "solid",
+        svg: "location-dot",
+        info: "Carrera 11-A de las Brisas del Orinoco diagonal al edificio pequeño de Magda publicidad",
+    },
+];
+
+const now = new Date().getFullYear();
+---
+
+<footer
+    class="text-secondary font-secondary text-sm py-5 px-3 sm:px-10 bg-section"
+>
+    <script
+        src="https://kit.fontawesome.com/1533ee2ebc.js"
+        crossorigin="anonymous"></script>
+
+    <div
+        class="flex flex-col space-y-5 sm:flex-row sm:justify-between sm:space-x-10"
+    >
+        <div class="space-y-2">
+            <h3 class="font-bold text-base">CONTACTS</h3>
+            {
+                contact_info.map(({ tag, svg, info, link }) => (
+                    <div class="space-x-2">
+                        {tag === "brands" ? (
+                            <a
+                                href={link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <i class={`fa-${tag} fa-${svg}`} />
+                                <span>{info}</span>
+                            </a>
+                        ) : (
+                            <i class={`fa-${tag} fa-${svg}`} />
+                            <span>{info}</span>
+                        )}
+                    </div>
+                ))
+            }
+        </div>
+
+        <div class="text-xs content-end text-center lg:text-left">
+            <p>&copy; {now} Andrés Ortiz. Todos Los Derechos Reservados</p>
+        </div>
+
+        <a class="underline hidden" href="/legal-advice"> Aviso legal </a>
+        <a class="underline hidden" href="/privacy-policy">
+            Política de privacidad
+        </a>
+    </div>
+</footer>
