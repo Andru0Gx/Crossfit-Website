@@ -2,4 +2,62 @@
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="MonagasBox" description="Web Oficial de el gym MonagasBox" />
+<Layout title="MonagasBox" description="Web Oficial de el gym MonagasBox">
+    <section class="h-[36rem] relative overflow-hidden flex items-center">
+        <video
+            autoplay=""
+            muted=""
+            loop=""
+            playsinline=""
+            poster="https://www.crossfit.com/wp-content/uploads/2023/11/13131232/crossfit-coach-led-fitness-training-adapted-for-you-handstand-hold.jpg"
+            src="https://www.crossfit.com/wp-content/uploads/2023/11/13114552/CrossFit-Where-Fitness-Meets-Health.mp4"
+            class="absolute -z-10 opacity-50 object-cover h-full w-full blur-sm"
+        ></video>
+
+        <div class="ml-10 w-96">
+            <p class="text-5xl text-secondary select-none">
+                Si Quieres <span class="text-primary">Cambiar Tu Vida</span>,
+                Este Es Tu Lugar
+            </p>
+        </div>
+    </section>
+
+    <section class="flex justify-center m-5">
+        <button
+            class="container bg-secondary p-5 rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300 ease-in-out"
+            id="inscribete"
+        >
+            <h2 class="text-2xl text-center text-primary sm:text-4xl">
+                !Primera Clase Gratis!
+            </h2>
+            <p class="text-center text-lg mt-5 text-wrap font-secondary">
+                Ven y disfruta de una clase gratis en nuestro gimnasio, solo
+                tienes que registrarte Aqui!
+            </p>
+        </button>
+    </section>
+
+    <!-- TODO Hacer un componente para el button y otro para el video -->
+
+    <script>
+        if (window.innerWidth < 768) {
+            window.addEventListener("scroll", () => {
+                const button = document.getElementById("inscribete");
+
+                if (!button) return;
+
+                if (window.scrollY > 100) {
+                    button.classList.add("scale-105");
+                } else {
+                    button.classList.remove("scale-105");
+                }
+            });
+        }
+    </script>
+
+    <style>
+        video {
+            mask-image: linear-gradient(black 80%, transparent);
+        }
+    </style>
+</Layout>
