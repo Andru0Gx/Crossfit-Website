@@ -1,0 +1,20 @@
+---
+const { src, poster, class: className } = Astro.props;
+---
+
+<video
+    autoplay=""
+    muted=""
+    loop=""
+    playsinline=""
+    poster={poster}
+    src={src}
+    class={className}></video>
+
+<slot />
+
+<style>
+    video {
+        mask-image: linear-gradient(black 80%, transparent);
+    }
+</style>
