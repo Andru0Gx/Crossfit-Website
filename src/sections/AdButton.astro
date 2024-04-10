@@ -1,0 +1,30 @@
+<button
+    class="relative bg-secondary w-fit h-fit py-5 px-8 rounded-2xl shadow-xl hover:scale-105 transition-transform duration-300 ease-in-out"
+    id="inscribete"
+>
+    <h2 class="text-2xl text-center text-primary sm:text-4xl">
+        !Primera Clase Gratis!
+    </h2>
+    <p class="text-center text-lg mt-5 text-wrap font-secondary">
+        Ven y disfruta de una clase gratis en nuestro gimnasio, solo tienes que
+        registrarte Aqui!
+    </p>
+
+    <i class="fa-regular fa-hand-pointer absolute bottom-2 right-2"></i>
+</button>
+
+<script>
+    if (window.innerWidth < 768) {
+        window.addEventListener("scroll", () => {
+            const button = document.getElementById("inscribete");
+
+            if (!button) return;
+
+            if (window.scrollY > 200) {
+                button.classList.add("scale-105");
+            } else {
+                button.classList.remove("scale-105");
+            }
+        });
+    }
+</script>
