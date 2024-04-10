@@ -13,6 +13,7 @@ export default {
                 secondary: "var(--secondary-color)",
                 bg: "var(--background-color)",
                 section: "var(--section-color)",
+                subsection: "var(--subsection-color)",
             },
         },
     },
