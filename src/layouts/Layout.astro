@@ -1,4 +1,6 @@
 ---
+import { ViewTransitions } from "astro:transitions";
+
 import "@fontsource/saira-stencil-one";
 import "@fontsource-variable/onest";
 
@@ -22,32 +24,36 @@ const { title, description } = Astro.props;
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="generator" content={Astro.generator} />
         <title>{title}</title>
+        <ViewTransitions />
+        <script
+            src="https://kit.fontawesome.com/1533ee2ebc.js"
+            crossorigin="anonymous"></script>
     </head>
     <body class="overflow-x-hidden">
         <Header />
         <slot />
         <Footer />
+        <style is:global>
+            :root {
+                --primary-color: #f50538;
+                --secondary-color: #fffafa;
+                --background-color: #1a1828;
+                --section-color: #0f0e17;
+            }
+
+            html {
+                font-family: "Saira Stencil One", "Onest Variable", system-ui,
+                    sans-serif;
+            }
+
+            body {
+                margin: 0;
+                padding: 0;
+                min-height: 100vh;
+                background-color: var(--background-color);
+                display: flex;
+                flex-direction: column;
+            }
+        </style>
     </body>
 </html>
-<style is:global>
-    :root {
-        --primary-color: #f50538;
-        --secondary-color: #fffafa;
-        --background-color: #1a1828;
-        --section-color: #0f0e17;
-    }
-
-    html {
-        font-family: "Saira Stencil One", "Onest Variable", system-ui,
-            sans-serif;
-    }
-
-    body {
-        margin: 0;
-        padding: 0;
-        min-height: 100vh;
-        background-color: var(--background-color);
-        display: flex;
-        flex-direction: column;
-    }
-</style>
