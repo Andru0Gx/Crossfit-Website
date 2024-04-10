@@ -1,0 +1,45 @@
+---
+//https://github.com/midudev/la-velada-web-oficial/blob/main/src/components/HamburgerButton.astro
+const width = "w-6";
+const genericHamburgerLine = `h-[2px] ${width} bg-gray-300 transition ease transform duration-300`;
+---
+
+<button
+    id="hamburgerButton"
+    class:list={[
+        "group relative flex h-5 flex-col justify-between lg:hidden",
+        width,
+    ]}
+>
+    <span
+        class:list={[
+            "group-[.open]:translate-y-2 group-[.open]:rotate-45",
+            genericHamburgerLine,
+        ]}
+    >
+    </span>
+    <span class:list={["group-[.open]:opacity-0", genericHamburgerLine]}></span>
+    <span class:list={["group-[.open]:opacity-0", genericHamburgerLine]}></span>
+    <span
+        class:list={[
+            "group-[.open]:-translate-y-[0.6rem] group-[.open]:-rotate-45",
+            genericHamburgerLine,
+        ]}
+    >
+    </span>
+</button>
+
+<script>
+    document.addEventListener("astro:page-load", () => {
+        const hamburgerButton = document.getElementById("hamburgerButton");
+        const nav = document.getElementById("nav");
+        if (!hamburgerButton) return;
+        hamburgerButton.addEventListener("click", () => {
+            if (hamburgerButton && nav) {
+                nav.classList.toggle("pointer-events-none");
+                nav.classList.toggle("opacity-0");
+                hamburgerButton.classList.toggle("open");
+            }
+        });
+    });
+</script>
