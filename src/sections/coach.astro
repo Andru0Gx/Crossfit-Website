@@ -1,0 +1,30 @@
+---
+const coach_info = [
+    {
+        name: "Edgar ",
+        surname: "Navarro",
+        src: "/img/Edgar.png",
+        description:
+            "Con años de experiencia y un enfoque personalizado, Navarro es un líder excepcional en el mundo del fitness. Su habilidad para motivar y guiar a través de desafiantes entrenamientos de CrossFit lo hace destacar como entrenador. ¿Buscas alcanzar nuevos niveles de rendimiento? Edgar es la elección perfecta. Únete a él en el camino hacia una vida más saludable y fuerte. ¡No te arrepentirás!",
+        tags: ["Coach", "Motivador"],
+    },
+];
+---
+
+{
+    coach_info.map(({ name, surname, src, description, tags }) => (
+        <div class="main_div flex flex-col space-y-5 lg:flex-row lg:space-x-32 items-center">
+            <img
+                src={src}
+                alt={`${name} ${surname}`}
+                class="size-64 rounded-3xl object-cover lg:size-80"
+            />
+            <div class="h-fit lg:w-[32rem] space-y-2 text-secondary font-secondary">
+                <h2 class="text-2xl font-main lg:text-6xl">
+                    {name} <span class="text-red-400">{surname}</span>
+                </h2>
+                <p>{description}</p>
+            </div>
+        </div>
+    ))
+}
