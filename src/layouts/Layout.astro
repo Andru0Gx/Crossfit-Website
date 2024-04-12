@@ -61,6 +61,47 @@ const { title, description, preload, canonical, image } = Astro.props;
                 display: flex;
                 flex-direction: column;
             }
+
+            @supports selector(::-webkit-scrollbar) {
+                ::-webkit-scrollbar {
+                    width: 10px;
+                    border-radius: 10px;
+                }
+
+                ::-webkit-scrollbar-thumb {
+                    border-radius: 10px;
+                    background-color: var(--primary-color);
+                    border: 2px solid transparent;
+                    background-clip: content-box;
+                }
+
+                ::-webkit-scrollbar-thumb:active {
+                    background-color: var(--primary-color);
+                }
+
+                ::-webkit-scrollbar-track {
+                    background: var(--background-color);
+                }
+
+                ::-webkit-scrollbar-corner {
+                    background: var(--background-color);
+                }
+            }
+
+            @supports not selector(::-webkit-scrollbar) {
+                * {
+                    scrollbar-color: var(--background-color) transparent;
+                    scrollbar-width: thin;
+                }
+            }
+
+            .anchor-main-content {
+                pointer-events: none;
+            }
+
+            .anchor-main-content:focus {
+                pointer-events: all;
+            }
         </style>
     </body>
 </html>
