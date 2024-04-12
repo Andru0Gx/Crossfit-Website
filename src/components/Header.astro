@@ -16,7 +16,7 @@ const pages = [
     },
 ];
 
-import HamburguerMenu from './HamburguerMenu.astro'
+import HamburguerMenu from "./HamburguerMenu.astro";
 ---
 
 <header
@@ -48,7 +48,12 @@ import HamburguerMenu from './HamburguerMenu.astro'
                 {
                     pages.map(({ title, url, rel, target }) => (
                         <div>
-                            <a href={url} rel={rel} target={target} class="tracking-wider">
+                            <a
+                                href={url}
+                                rel={rel}
+                                target={target}
+                                class="tracking-wider"
+                            >
                                 {title}
                             </a>
                         </div>
@@ -57,5 +62,4 @@ import HamburguerMenu from './HamburguerMenu.astro'
             </div>
         </nav>
     </div>
-
 </header>
