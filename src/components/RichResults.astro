@@ -1,0 +1,52 @@
+---
+/** https://developers.google.com/search/docs/appearance/structured-data/organization */
+const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    url: "https://monagasbox.vercel.app",
+    image: "./favicon.svg",
+    sameAs: "https://www.instagram.com/monagasbox",
+    logo: "./favicon.svg",
+    name: "MonagasBox",
+    alternateName: "Centro de Entrenamiento Físico MonagasBox",
+    description:
+        "Centro de Entrenamiento Físico MonagasBox gimnasio de crossfit en Maturín, Venezuela. Ofrecemos clases de crossfit para todas las edades y niveles de experiencia.",
+};
+
+const FAQs = [
+    {
+        question: "¿Dónde se encuentra MonagasBox?",
+        answer: "MonagasBox se encuentra en la <strong>Carrera 11-A de las Brisas del Orinoco</strong> diagonal al edificio pequeño de Magda publicidad en Maturín, Venezuela",
+    },
+    {
+        question: "¿Cuál es el horario de MonagasBox?",
+        answer: "El horario de MonagasBox es de <strong>7:00am a 12:00pm y de 1:00pm a 6:00pm de lunes a viernes</strong>",
+    },
+    {
+        question: "¿Que tal es el ambiente en MonagasBox?",
+        answer: "El ambiente en MonagasBox es <strong>amigable y familiar</strong>, nos esforzamos por crear un ambiente de apoyo y motivación para todos nuestros miembros",
+    },
+];
+
+/** https://developers.google.com/search/docs/appearance/structured-data/faqpage */
+const FAQSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+        FAQs.map(({ answer, question }) => ({
+            "@type": "Question",
+            name: question,
+            acceptedAnswer: {
+                "@type": "Answer",
+                text: answer,
+            },
+        })),
+    ],
+};
+---
+
+<script
+    type="application/ld+json"
+    set:html={JSON.stringify(organizationSchema)}
+/>
+<script type="application/ld+json" set:html={JSON.stringify(FAQSchema)} />

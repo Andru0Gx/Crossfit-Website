@@ -1,0 +1,9 @@
+{
+    "name": "MonagasBox",
+    "short_name": "MonagasBox",
+    "description": "MonagasBox es un gimnasio de CrossFit en Maturín, Venezuela. Ofrecemos entrenamientos personalizados y clases grupales. ¡Vive la experiencia en el Box!",
+    "theme_color": "#1a1828",
+    "background_color": "#1a1828",
+    "display": "fullscreen",
+    "icon": "/favicon.svg"
+}
