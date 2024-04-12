@@ -13,13 +13,13 @@ const coach_info = [
 
 {
     coach_info.map(({ name, surname, src, description, tags }) => (
-        <div class="main_div flex flex-col space-y-5 lg:flex-row lg:space-x-32 items-center">
+        <div class="main_div flex flex-col space-y-5 sm:flex-row sm:space-x-16 items-center">
             <img
                 src={src}
                 alt={`${name} ${surname}`}
-                class="size-64 rounded-3xl object-cover lg:size-80"
+                class="size-64 rounded-3xl object-cover sm:size-80"
             />
-            <div class="h-fit lg:w-[32rem] space-y-2 text-secondary font-secondary">
+            <div class="h-fit sm:w-[32rem] space-y-2 text-secondary font-secondary">
                 <h2 class="text-2xl font-main lg:text-6xl">
                     {name} <span class="text-red-400">{surname}</span>
                 </h2>
