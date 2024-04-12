@@ -10,8 +10,30 @@
         registrarte Aqui
     </p>
 
-    <i class="fa-regular fa-hand-pointer absolute bottom-2 right-2"></i>
+    <i
+        class="fa-regular fa-hand-pointer absolute bottom-2 right-2 animate-scale"
+        style="animation-duration: 500ms; animation-iteration-count: infinite;"
+    ></i>
 </button>
+
+<style>
+    .scale-105 {
+        transform: scale(1.25);
+    }
+
+    .animate-scale {
+        animation: scale 500ms infinite alternate;
+    }
+
+    @keyframes scale {
+        0% {
+            transform: scale(1);
+        }
+        100% {
+            transform: scale(1.25);
+        }
+    }
+</style>
 
 <script>
     if (window.innerWidth < 768) {
