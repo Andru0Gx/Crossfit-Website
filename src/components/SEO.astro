@@ -44,6 +44,13 @@ const canonicalURL = canonical
 <meta http-equiv="Content-Security-Policy" content="frame-ancestors 'none'" />
 <meta http-equiv="X-Content-Type-Options" content="nosniff" />
 
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@MonagasBox" />
+<meta name="twitter:creator" content="@MonagasBox" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={new URL(image, Astro.url)} />
+
 <meta name="og:image" content={new URL(image, Astro.url)} />
 <meta name="og:title" content={title} />
 <meta name="og:description" content={description} />
