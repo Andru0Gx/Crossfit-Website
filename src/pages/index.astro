@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import AdButton from "../sections/AdButton.astro";
 import Hero from "../sections/Hero.astro";
 import Coaches from "../sections/coach.astro";
+import Works from "../sections/Works.astro";
 ---
 
 <Layout title="MonagasBox" description="Web Oficial de el gym MonagasBox">
@@ -27,5 +28,14 @@ import Coaches from "../sections/coach.astro";
 
     <section class="flex justify-center p-10 h-fit bg-subsection items-center">
         <Coaches />
+    </section>
+
+    <section
+        class="flex flex-col justify-center items-center space-y-10 my-10 mx-5"
+    >
+        <h3 class="text-2xl lg:text-5xl text-secondary">
+            ¡Vive la Experiencia en el Box!
+        </h3>
+        <Works />
     </section>
 </Layout>
