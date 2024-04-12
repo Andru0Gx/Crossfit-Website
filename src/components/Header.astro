@@ -12,9 +12,14 @@ const pages = [
     },
     {
         title: "Login",
-        url: "/",
+        url: "/login",
+        disabled: true,
+        soondate: "Proximamente",
     },
-];
+].map((page) => ({
+    ...page,
+    active: page.url === Astro.url.pathname,
+}));
 
 import HamburguerMenu from "./HamburguerMenu.astro";
 ---
@@ -26,15 +31,30 @@ import HamburguerMenu from "./HamburguerMenu.astro";
         Monagas<span class="text-primary">Box</span>
     </a>
 
-    <nav class="font-secondary text-secondary hidden lg:flex space-x-10">
+    <nav class="font-secondary hidden lg:flex space-x-10 text-secondary">
         {
-            pages.map(({ title, url, rel, target }) => (
-                <div class="">
-                    <a href={url} rel={rel} target={target} title={title}>
-                        {title}
-                    </a>
-                </div>
-            ))
+            pages.map(
+                ({ title, url, rel, target, active, disabled, soondate }) => (
+                    <div class="flex flex-col items-center">
+                        <a
+                            href={url}
+                            rel={rel}
+                            target={target}
+                            title={title}
+                            class:list={[
+                                { "current-page": active },
+                                { "pointer-events-none": disabled },
+                            ]}
+                        >
+                            {title}
+                        </a>
+
+                        {soondate && (
+                            <span class="text-xs text-primary">{soondate}</span>
+                        )}
+                    </div>
+                )
+            )
         }
     </nav>
 
@@ -46,14 +66,17 @@ import HamburguerMenu from "./HamburguerMenu.astro";
         >
             <div class="flex flex-col items-center space-y-10 py-5">
                 {
-                    pages.map(({ title, url, rel, target }) => (
+                    pages.map(({ title, url, rel, target, active }) => (
                         <div>
                             <a
                                 href={url}
                                 rel={rel}
                                 target={target}
-                                class="tracking-wider"
                                 title={title}
+                                class:list={[
+                                    "tracking-wider",
+                                    { "current-page": active },
+                                ]}
                             >
                                 {title}
                             </a>
@@ -64,3 +87,17 @@ import HamburguerMenu from "./HamburguerMenu.astro";
         </nav>
     </div>
 </header>
+
+<style>
+    .current-page {
+        border-bottom: 2px solid var(--primary-color);
+    }
+
+    #nav {
+        pointer-events: auto;
+    }
+
+    #nav.opacity-100 {
+        opacity: 1;
+    }
+</style>
