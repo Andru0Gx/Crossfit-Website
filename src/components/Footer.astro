@@ -12,12 +12,17 @@ const contact_info = [
         svg: "phone",
         info: "+58 424-9597302",
     },
+    {
+        tag: "solid",
+        svg: "clock",
+        info: "Lunes a Viernes: 7:00am - 12:00pm y 1:00pm - 6:00pm",
+    },
 
     {
         tag: "solid",
         svg: "location-dot",
         info: "Carrera 11-A de las Brisas del Orinoco diagonal al edificio pequeño de Magda publicidad",
-    },
+    }, 
 ];
 
 const now = new Date().getFullYear();
@@ -30,7 +35,6 @@ const now = new Date().getFullYear();
         class="flex flex-col space-y-5 sm:flex-row sm:justify-between sm:space-x-10"
     >
         <div class="space-y-2">
-            <h3 class="font-bold text-base">CONTACTOS</h3>
             {
                 contact_info.map(({ tag, svg, info, link }) => (
                     <div class="space-x-2">
