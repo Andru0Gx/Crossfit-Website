@@ -6,7 +6,13 @@ const coach_info = [
         src: "/img/Edgar.png",
         description:
             "Con años de experiencia y un enfoque personalizado, Navarro es un líder excepcional en el mundo del fitness. Su habilidad para motivar y guiar a través de desafiantes entrenamientos de CrossFit lo hace destacar como entrenador. ¿Buscas alcanzar nuevos niveles de rendimiento? Edgar es la elección perfecta. Únete a él en el camino hacia una vida más saludable y fuerte. ¡No te arrepentirás!",
-        tags: ["Coach", "Motivador"],
+        tags: [
+            "Coach",
+            "Motivador",
+            "Metabólico",
+            "Gimnástico",
+            "Halterofiíico",
+        ],
     },
 ];
 ---
@@ -33,6 +39,17 @@ const coach_info = [
                     él un mentor comprometido y una fuente constante de
                     inspiración para superar sus límites y alcanzar sus metas.
                 </p>
+
+                <div class="flex flex-wrap">
+                    {tags.map((tag) => (
+                        <span
+                            class="text-xs font-bold bg-red-400 text-white px-2 py-1 rounded-full hover:bg-red-500 transition-all duration-300 ease-in-out m-1
+                        "
+                        >
+                            {tag}
+                        </span>
+                    ))}
+                </div>
             </div>
         </div>
     ))
