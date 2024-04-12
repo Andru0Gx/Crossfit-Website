@@ -22,7 +22,7 @@ import HamburguerMenu from "./HamburguerMenu.astro";
 <header
     class="sticky top-0 w-full flex justify-between px-3 pt-2 h-20 items-center shadow-lg bg-section sm:px-10 z-10"
 >
-    <a href="/" class="font-main text-secondary text-2xl">
+    <a href="/" class="font-main text-secondary text-2xl" title="MonagasBox">
         Monagas<span class="text-primary">Box</span>
     </a>
 
@@ -30,7 +30,7 @@ import HamburguerMenu from "./HamburguerMenu.astro";
         {
             pages.map(({ title, url, rel, target }) => (
                 <div class="">
-                    <a href={url} rel={rel} target={target}>
+                    <a href={url} rel={rel} target={target} title={title}>
                         {title}
                     </a>
                 </div>
@@ -53,6 +53,7 @@ import HamburguerMenu from "./HamburguerMenu.astro";
                                 rel={rel}
                                 target={target}
                                 class="tracking-wider"
+                                title={title}
                             >
                                 {title}
                             </a>

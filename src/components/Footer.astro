@@ -1,6 +1,7 @@
 ---
 const contact_info = [
     {
+        title: "Redes Sociales",
         tag: "brands",
         svg: "instagram",
         info: "@MonagasBox",
@@ -8,17 +9,20 @@ const contact_info = [
     },
 
     {
+        title: "Numero de Contacto",
         tag: "solid",
         svg: "phone",
         info: "+58 424-9597302",
     },
     {
+        title: "Horario de Atención",
         tag: "solid",
         svg: "clock",
         info: "Lunes a Viernes: 7:00am - 12:00pm y 1:00pm - 6:00pm",
     },
 
     {
+        title: "Ubicación",
         tag: "solid",
         svg: "location-dot",
         info: "Carrera 11-A de las Brisas del Orinoco diagonal al edificio pequeño de Magda publicidad",
@@ -36,7 +40,7 @@ const now = new Date().getFullYear();
     >
         <div class="space-y-2">
             {
-                contact_info.map(({ tag, svg, info, link }) => (
+                contact_info.map(({ tag, svg, info, link, title }) => (
                     <div class="space-x-2">
                         {tag === "brands" ? (
                             <a
@@ -44,6 +48,7 @@ const now = new Date().getFullYear();
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 class="space-x-2"
+                                title={title}
                             >
                                 <i class={`fa-${tag} fa-${svg}`} />
                                 <span>{info}</span>
@@ -63,8 +68,8 @@ const now = new Date().getFullYear();
             <p>&copy; {now} Andrés Ortiz. Todos Los Derechos Reservados</p>
         </div>
 
-        <a class="underline hidden" href="/legal-advice"> Aviso legal </a>
-        <a class="underline hidden" href="/privacy-policy">
+        <a class="underline hidden" href="/legal-advice" title="Aviso Legal"> Aviso legal </a>
+        <a class="underline hidden" href="/privacy-policy" title="Politica de Privacidad">
             Política de privacidad
         </a>
     </div>
