@@ -41,7 +41,8 @@ const canonicalURL = canonical
 
 <meta name="keywords" content="crossfit, deporte, box, gimnasio, gym" />
 
-<meta http-equiv="Content-Security-Policy" />
+<meta http-equiv="Content-Security-Policy" content="frame-ancestors 'none'" />
+<meta http-equiv="X-Content-Type-Options" content="nosniff" />
 
 <meta name="og:image" content={new URL(image, Astro.url)} />
 <meta name="og:title" content={title} />
@@ -50,7 +51,6 @@ const canonicalURL = canonical
 <meta name="og:site_name" content="MonagasBox" />
 <meta name="og:type" content="website" />
 <meta name="og:locale" content="es_ES" />
-<meta http-equiv="X-Content-Type-Options" content="nosniff" />
 
 <meta name="robots" content="index, follow" />
 <meta name="googlebot" content="index, follow" />
