@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Ad from "../sections/Advertisment.astro";
 import Hero from "../sections/Hero.astro";
 import Coaches from "../sections/coach.astro";
-import Works from "../sections/Works.astro";
+import Plans from "@/sections/Plans.astro";
 ---
 
 <Layout
@@ -31,15 +31,10 @@ import Works from "../sections/Works.astro";
     </section>
 
     <section class="flex justify-center p-10 h-fit bg-subsection items-center">
-        <Coaches />
+        <Plans />
     </section>
 
-    <section
-        class="flex flex-col justify-center items-center space-y-10 my-10 mx-5"
-    >
-        <h2 class="text-2xl lg:text-5xl text-secondary">
-            ¡Vive la Experiencia en el Box!
-        </h2>
-        <Works />
+    <section class="flex justify-center p-10 h-fit items-center">
+        <Coaches />
     </section>
 </Layout>
