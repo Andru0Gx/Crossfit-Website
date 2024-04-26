@@ -1,0 +1,54 @@
+---
+const pricing = [
+    {
+        name: "Plan Mensual",
+        price: "30 USD/mes",
+        description: "Ideal para aquellos que quieren flexibilidad.",
+    },
+    {
+        name: "Plan Trimestral",
+        price: "85 USD/cada 3 meses",
+        description: "Compromiso flexible a medio plazo.",
+    },
+    {
+        name: "Plan Anual",
+        price: "324 USD/anual",
+        description: "Para los más dedicados, con el mejor precio.",
+    },
+].map((plan) => ({
+    ...plan,
+    features: [
+        "Wods Diarios",
+        "Gana recompensas mientras entrenas",
+        "Monitorea tus entrenamientos",
+    ],
+}));
+---
+
+<div class="p-10 flex flex-col space-y-5">
+    <h2 class="text-2xl lg:text-5xl text-secondary text-center">Precios</h2>
+
+    <div class="flex space-x-5">
+        {
+            pricing.map(({ name, price, features, description }) => (
+                <div class="bg-white p-5 rounded-lg shadow-lg font-secondary flex flex-col justify-between w-96 space-y-2 hover:scale-105 transition-transform duration-300 ease-in-out">
+                    <div>
+                        <h3 class="text-2xl text-center font-main">{name}</h3>
+                        <p class="text-center text-3xl font-main">{price}</p>
+                    </div>
+
+                    <p>{description}</p>
+
+                    <ul class="list-disc list-inside text-gray-500">
+                        {features.map((feature) => (
+                            <li>{feature}</li>
+                        ))}
+                    </ul>
+                    <button class="bg-primary text-white p-2 rounded-lg w-full mt-5">
+                        Contratar
+                    </button>
+                </div>
+            ))
+        }
+    </div>
+</div>
