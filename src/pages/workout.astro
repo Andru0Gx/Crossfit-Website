@@ -1,0 +1,90 @@
+---
+import Layout from "@/layouts/Layout.astro";
+---
+
+<Layout
+    description="MonagasBox es un gimnasio de CrossFit en Maturín, Venezuela. Ofrecemos entrenamientos personalizados y clases grupales. ¡Vive la experiencia en el Box!"
+    title="MonagasBox - ¡Gimnasio de CrossFit!"
+    canonical="https://MonagasBox.vercel.app"
+>
+    <section class="flex m-auto justify-center items-center">
+        <div
+            class="h-fit w-96 bg-section p-5 font-secondary rounded-2xl shadow-[0_0_10px_0_#f50538] space-y-5"
+        >
+            <h1 class="text-3xl text-white text-center font-bold font-main">
+                Iniciar Sesion
+            </h1>
+            <form>
+                <div class="mb-4">
+                    <label
+                        for="email"
+                        class="block text-white text-sm font-bold mb-2"
+                        >Correo Electrónico</label
+                    >
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        class="w-full p-2 border border-gray-300 rounded"
+                    />
+                </div>
+                <div class="mb-4">
+                    <label
+                        for="password"
+                        class="block text-white text-sm font-bold mb-2"
+                        >Contraseña</label
+                    >
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        class="w-full p-2 border border-gray-300 rounded"
+                    />
+                </div>
+
+                <button class="block text-white text-sm font-bold mb-2">
+                    ¿Olvidaste tu contraseña?
+                </button>
+                <button
+                    type="submit"
+                    class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                    >Enviar</button
+                >
+            </form>
+        </div>
+    </section>
+
+    <section class="flex m-auto justify-center items-center">
+        <div
+            class="h-fit w-96 bg-section p-5 font-secondary rounded-2xl shadow-[0_0_10px_0_#f50538] space-y-5"
+        >
+            <h2 class="text-3xl text-white text-center font-bold font-main">
+                Recupera tu contraseña
+            </h2>
+            <form>
+                <div class="mb-4">
+                    <label
+                        for="email"
+                        class="block text-white text-sm font-bold mb-2"
+                        >Correo Electrónico</label
+                    >
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        class="w-full p-2 border border-gray-300 rounded"
+                    />
+                </div>
+
+                <button class="block text-white text-sm font-bold mb-2">
+                    ¿Olvidaste tu contraseña?
+                </button>
+                <button
+                    type="submit"
+                    class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                    >Enviar</button
+                >
+            </form>
+        </div>
+    </section>
+</Layout>
