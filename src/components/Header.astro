@@ -1,7 +1,10 @@
 ---
-const pages = [
+import { getSession } from "auth-astro/server";
+const session = await getSession(Astro.request);
+
+const logout = [
     {
-        title: "Inicio",
+        title: "Home",
         url: "/",
     },
     {
@@ -12,15 +15,62 @@ const pages = [
     },
     {
         title: "Iniciar Sesión",
-        url: "/workout.astro",
+        type: "button",
         disabled: true,
-        soondate: "Proximamente",
+        soondate: "Proximamente!",
+        url: "",
     },
-].map((page) => ({
-    ...page,
-    active: page.url === Astro.url.pathname,
-}));
+];
 
+const login = [
+    {
+        title: "Home",
+        url: "/",
+        rel: undefined,
+        target: undefined,
+    },
+    {
+        title: "Wods",
+        url: "/Wods.astro",
+        disabled: true,
+        soondate: "Proximamente!",
+    },
+    {
+        title: "Tienda",
+        url: "/Tienda.astro",
+        disabled: true,
+        soondate: "Proximamente!",
+    },
+    {
+        title: "Configuración",
+        url: "/Configuración.astro",
+        disabled: true,
+        soondate: "Proximamente!",
+    },
+    {
+        title: "Cerrar Sesión",
+        type: "button",
+        disabled: true,
+        soondate: "Proximamente!",
+        url: "",
+    },
+];
+
+let pages;
+
+if (session) {
+    pages = login.map((page) => ({
+        ...page,
+        active: page.url === Astro.url.pathname,
+    }));
+} else {
+    pages = logout.map((page) => ({
+        ...page,
+        active: page.url === Astro.url.pathname,
+    }));
+}
+
+import { SignIn, SignOut } from "auth-astro/components";
 import HamburguerMenu from "./HamburguerMenu.astro";
 ---
 
@@ -34,21 +84,53 @@ import HamburguerMenu from "./HamburguerMenu.astro";
     <nav class="font-secondary hidden lg:flex space-x-10 text-secondary">
         {
             pages.map(
-                ({ title, url, rel, target, active, disabled, soondate }) => (
+                ({
+                    title,
+                    url,
+                    active,
+                    disabled,
+                    soondate,
+                    type,
+                    rel,
+                    target,
+                }) => (
                     <div class="flex flex-col items-center">
-                        <a
-                            href={url}
-                            rel={rel}
-                            target={target}
-                            title={title}
-                            class:list={[
-                                { "current-page": active },
-                                { "pointer-events-none": disabled },
-                            ]}
-                        >
-                            {title}
-                        </a>
-                        {soondate && (
+                        {type === "button" ? (
+                            <>
+                                {session ? (
+                                    <SignOut
+                                        class:list={[
+                                            { "pointer-events-none": disabled },
+                                        ]}
+                                    >
+                                        {title}
+                                    </SignOut>
+                                ) : (
+                                    <SignIn
+                                        class:list={[
+                                            { "pointer-events-none": disabled },
+                                        ]}
+                                    >
+                                        {title}
+                                    </SignIn>
+                                )}
+                            </>
+                        ) : (
+                            <a
+                                href={url}
+                                title={title}
+                                rel={rel}
+                                target={target}
+                                class:list={[
+                                    { "current-page": active },
+                                    { "pointer-events-none": disabled },
+                                ]}
+                            >
+                                {title}
+                            </a>
+                        )}
+
+                        {soondate && disabled && (
                             <span class="text-xs text-primary">{soondate}</span>
                         )}
                     </div>
@@ -65,22 +147,66 @@ import HamburguerMenu from "./HamburguerMenu.astro";
         >
             <div class="flex flex-col items-center space-y-10 py-5">
                 {
-                    pages.map(({ title, url, rel, target, active }) => (
-                        <div>
-                            <a
-                                href={url}
-                                rel={rel}
-                                target={target}
-                                title={title}
-                                class:list={[
-                                    "tracking-wider",
-                                    { "current-page": active },
-                                ]}
-                            >
-                                {title}
-                            </a>
-                        </div>
-                    ))
+                    pages.map(
+                        ({
+                            title,
+                            url,
+                            active,
+                            disabled,
+                            soondate,
+                            type,
+                            rel,
+                            target,
+                        }) => (
+                            <div class="flex flex-col items-center">
+                                {type === "button" ? (
+                                    <>
+                                        {session ? (
+                                            <SignOut
+                                                class:list={[
+                                                    {
+                                                        "pointer-events-none":
+                                                            disabled,
+                                                    },
+                                                ]}
+                                            >
+                                                {title}
+                                            </SignOut>
+                                        ) : (
+                                            <SignIn
+                                                class:list={[
+                                                    {
+                                                        "pointer-events-none":
+                                                            disabled,
+                                                    },
+                                                ]}
+                                            >
+                                                {title}
+                                            </SignIn>
+                                        )}
+                                    </>
+                                ) : (
+                                    <a
+                                        href={url}
+                                        title={title}
+                                        rel={rel}
+                                        target={target}
+                                        class:list={[
+                                            { "current-page": active },
+                                            { "pointer-events-none": disabled },
+                                        ]}
+                                    >
+                                        {title}
+                                    </a>
+                                )}
+                                {soondate && disabled && (
+                                    <span class="text-xs text-primary">
+                                        {soondate}
+                                    </span>
+                                )}
+                            </div>
+                        )
+                    )
                 }
             </div>
         </nav>
