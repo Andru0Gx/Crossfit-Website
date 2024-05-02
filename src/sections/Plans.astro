@@ -1,19 +1,22 @@
 ---
-const pricing = [
+let pricing = [
     {
         name: "Plan Mensual",
         price: "30 USD/mes",
         description: "Ideal para aquellos que quieren flexibilidad.",
+        plan: 1,
     },
     {
         name: "Plan Trimestral",
         price: "85 USD/cada 3 meses",
         description: "Compromiso flexible a medio plazo.",
+        plan: 2,
     },
     {
         name: "Plan Anual",
         price: "324 USD/anual",
         description: "Para los más dedicados, con el mejor precio.",
+        plan: 3,
     },
 ].map((plan) => ({
     ...plan,
@@ -22,7 +25,28 @@ const pricing = [
         "Gana recompensas mientras entrenas",
         "Monitorea tus entrenamientos",
     ],
+    active: false,
 }));
+
+import { getinfo } from "../APIs/session";
+import { getSession } from "auth-astro/server";
+const session = await getSession(Astro.request);
+const userinfo = await getinfo(session);
+
+if (userinfo) {
+    if (userinfo?.plan != 4) {
+        const userplan_info = pricing.find(
+            (plan) => plan.plan == userinfo.plan
+        );
+        pricing = pricing.filter((plan) => plan.plan === userinfo.plan);
+
+        // agregar el campo active al plan del usuario
+        pricing = pricing.map((plan) => ({
+            ...plan,
+            active: true,
+        }));
+    }
+}
 ---
 
 <div class="flex flex-col space-y-5 w-full max-w-full md:items-center">
@@ -32,25 +56,54 @@ const pricing = [
         class="flex space-x-5 p-5 overflow-x-scroll md:overflow-x-hidden md:p-0"
     >
         {
-            pricing.map(({ name, price, features, description }) => (
-                <div class="bg-white p-5 rounded-lg shadow-lg font-secondary flex flex-col justify-between min-w-60 space-y-2">
-                    <div>
-                        <h3 class="text-2xl text-center font-main">{name}</h3>
-                        <p class="text-center text-3xl font-main">{price}</p>
+            pricing.map(
+                ({ name, price, features, description, active, plan }) => (
+                    <div
+                        class:list={[
+                            "bg-white p-5 rounded-lg shadow-lg font-secondary flex flex-col justify-between min-w-60 space-y-2",
+                            active ? "border-4 border-primary" : "",
+                        ]}
+                    >
+                        <div>
+                            <h3 class="text-2xl text-center font-main">
+                                {name}
+                            </h3>
+                            <p class="text-center text-3xl font-main">
+                                {price}
+                            </p>
+                        </div>
+
+                        <p>{description}</p>
+
+                        <ul class="list-disc list-inside text-gray-500">
+                            {features.map((feature) => (
+                                <li>{feature}</li>
+                            ))}
+                        </ul>
+
+                        <>
+                            {active ? (
+                                <span class="bg-primary text-white p-2 rounded-lg w-full mt-5 text-center">
+                                    Plan Actual
+                                </span>
+                            ) : (
+                                <button
+                                    class="bg-primary text-white p-2 rounded-lg w-full mt-5"
+                                    id=`${plan}`
+                                >
+                                    Contratar
+                                </button>
+                            )}
+                        </P>
                     </div>
-
-                    <p>{description}</p>
-
-                    <ul class="list-disc list-inside text-gray-500">
-                        {features.map((feature) => (
-                            <li>{feature}</li>
-                        ))}
-                    </ul>
-                    <button class="bg-primary text-white p-2 rounded-lg w-full mt-5">
-                        Contratar
-                    </button>
-                </div>
-            ))
+                )
+            )
         }
     </div>
 </div>
+
+<script>
+    const buttons = document.querySelectorAll("button");
+
+    
+</script>
