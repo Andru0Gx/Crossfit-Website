@@ -4,6 +4,7 @@ import { ViewTransitions } from "astro:transitions";
 import "@fontsource/saira-stencil-one";
 import "@fontsource-variable/onest";
 
+import ButtonUp from "@/components/ButtonUp.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import SEO from "../components/SEO.astro";
@@ -38,6 +39,7 @@ const { title, description, preload, canonical, image } = Astro.props;
     <body class="overflow-x-hidden">
         <Header />
         <slot />
+        <ButtonUp />
         <Footer />
         <style is:global>
             :root {
