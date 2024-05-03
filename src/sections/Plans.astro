@@ -28,25 +28,25 @@ let pricing = [
     active: false,
 }));
 
-// import { getinfo } from "../APIs/session";
-// import { getSession } from "auth-astro/server";
-// const session = await getSession(Astro.request);
-// const userinfo = await getinfo(session);
+import { getinfo } from "../APIs/session";
+import { getSession } from "auth-astro/server";
+const session = await getSession(Astro.request);
+const userinfo = await getinfo(session);
 
-// if (userinfo) {
-//     if (userinfo?.plan != 4) {
-//         const userplan_info = pricing.find(
-//             (plan) => plan.plan == userinfo.plan
-//         );
-//         pricing = pricing.filter((plan) => plan.plan === userinfo.plan);
+if (userinfo) {
+    if (userinfo?.plan != 4) {
+        const userplan_info = pricing.find(
+            (plan) => plan.plan == userinfo.plan
+        );
+        pricing = pricing.filter((plan) => plan.plan === userinfo.plan);
 
-//         // agregar el campo active al plan del usuario
-//         pricing = pricing.map((plan) => ({
-//             ...plan,
-//             active: true,
-//         }));
-//     }
-// }
+        // agregar el campo active al plan del usuario
+        pricing = pricing.map((plan) => ({
+            ...plan,
+            active: true,
+        }));
+    }
+}
 ---
 
 <div class="flex flex-col space-y-5 w-full max-w-full md:items-center">
